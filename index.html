@@ -473,7 +473,7 @@ function chime(n){if(ac&&playing){osc(f(n),ac.currentTime,.5,'triangle',.06);}}
 function startMusic(){if(!ac){ac=new(window.AudioContext||window.webkitAudioContext)();master=ac.createGain();master.gain.value=.8;comp=ac.createDynamicsCompressor();comp.threshold.value=-18;comp.ratio.value=4;comp.connect(master);master.connect(ac.destination);}ac.resume();if(playing)return;master.gain.cancelScheduledValues(ac.currentTime);master.gain.setValueAtTime(.8,ac.currentTime);playing=true;step=0;nextT=ac.currentTime+.1;timer=setInterval(sched2,30);setBtn();}
 function stopMusic(fade){if(!playing)return;if(fade&&ac){master.gain.setTargetAtTime(0,ac.currentTime,2.5);setTimeout(()=>{clearInterval(timer);playing=false;setBtn();},9000);}else{clearInterval(timer);playing=false;setBtn();}}
 function setBtn(){const on=playing||(typeof ytOn!=='undefined'&&ytOn);document.getElementById('sound').textContent=on?'🔊 Musik aus':'🔈 Musik an';}
-document.getElementById('sound').onclick=()=>{if(ytOn){stopCeleb();return;}if(playing){stopMusic(false);return;}startCeleb();};
+document.getElementById('sound').onclick=()=>{if(playing){stopMusic(false);document.body.classList.remove('party-on');return;}startMusic();document.body.classList.add('party-on');};
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stopMusic(false);});
 
 // Celebration (offizielles Video, eingebettet)
@@ -502,8 +502,8 @@ async function runShow(){startMusic();
     await wait(850);}
   document.getElementById('slogan').classList.add('in');await wait(2600);if(skipped)return;show('sc4');}
 document.getElementById('startBtn').onclick=runShow;
-function enter(){document.getElementById('show').classList.add('gone');document.getElementById('sound').style.display='block';setBtn();setTimeout(boom,200);dealPolas();setTimeout(()=>{if(playing)stopMusic(true);},45000);}
-document.getElementById('popBtn').onclick=()=>{stopMusic(false);startCeleb();enter();};
+function enter(){document.getElementById('show').classList.add('gone');document.getElementById('sound').style.display='block';setBtn();setTimeout(boom,200);dealPolas();setTimeout(()=>{if(playing){stopMusic(true);setTimeout(()=>document.body.classList.remove('party-on'),9000);}},90000);}
+document.getElementById('popBtn').onclick=()=>{startMusic();document.body.classList.add('party-on');enter();};
 document.getElementById('skip').onclick=()=>{skipped=true;enter();};
 
 // Countdown (ruhig, eine Zeile)
