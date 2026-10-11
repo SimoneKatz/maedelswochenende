@@ -326,7 +326,6 @@ body.party-on .pola.in:nth-child(even){animation-delay:.245s}
   </div>
   <button class="skip" id="skip">überspringen ›</button>
 </div>
-<div id="yt"><div class="ythead"><span>🎵 Celebration</span><button id="ytx" aria-label="schließen">✕</button></div><div id="ytbox"></div></div>
 <button id="sound">🔊 Musik aus</button>
 
 <main>
@@ -476,11 +475,7 @@ function setBtn(){const on=playing||(typeof ytOn!=='undefined'&&ytOn);document.g
 document.getElementById('sound').onclick=()=>{if(playing){stopMusic(false);document.body.classList.remove('party-on');return;}startMusic();document.body.classList.add('party-on');};
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stopMusic(false);});
 
-// Celebration (offizielles Video, eingebettet)
 let ytOn=false;
-function startCeleb(){const box=document.getElementById('ytbox');box.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/3GwjfUFyY6M?autoplay=1&playsinline=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen title="Kool & The Gang - Celebration"></iframe>';document.getElementById('yt').classList.add('on');ytOn=true;document.body.classList.add('party-on');setBtn();}
-function stopCeleb(){document.getElementById('ytbox').innerHTML='';document.getElementById('yt').classList.remove('on');ytOn=false;document.body.classList.remove('party-on');setBtn();}
-document.getElementById('ytx').onclick=stopCeleb;
 
 // Intro
 const wait=ms=>new Promise(r=>setTimeout(r,ms));let skipped=false;
