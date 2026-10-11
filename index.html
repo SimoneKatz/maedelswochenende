@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Wir feiern unsere Freundschaft 💗</title>
+<meta name="description" content="Unser Mädelswochenende in Kehl, 16. bis 18. Oktober.">
+<meta property="og:title" content="Psst, Mädels … 💗">
+<meta property="og:description" content="Unser Wochenende in Kehl. Ton an und antippen!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&family=Caveat:wght@500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<style>
+:root{--bg:#fbf4ef;--blush:#f6dfe3;--rose:#d4789a;--rose2:#e9a8bd;--gold:#c49a62;--text:#4a3340;--muted:#8a6f7c;--card:#ffffff;--line:#efdfe2;--shadow:0 14px 40px rgba(150,90,110,.14)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--text);background:radial-gradient(900px 600px at 90% -5%,#f7d6df 0%,transparent 60%),radial-gradient(800px 600px at -10% 40%,#f3e3d3 0%,transparent 55%),var(--bg);min-height:100vh;overflow-x:hidden;line-height:1.55}
+h1,h2,h3,h4{font-family:"Playfair Display",serif;font-weight:500;margin:0}
+.hand{font-family:Caveat,cursive}
+.rose{color:var(--rose);font-style:italic}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.btn{border:0;cursor:pointer;font:700 16px Inter,sans-serif;color:#fff;background:var(--rose);padding:15px 28px;border-radius:999px;box-shadow:0 10px 30px rgba(212,120,154,.35);transition:transform .15s}
+.btn:active{transform:scale(.96)}
+.btn.soft{background:#fff;color:var(--rose);border:1.5px solid var(--rose2);box-shadow:none}
+
+/* Herzchen statt Perlen */
+#floaters{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.fl{position:absolute;bottom:-30px;color:var(--rose2);opacity:.35;animation:rise linear infinite}
+@keyframes rise{to{transform:translateY(-115vh) translateX(30px) rotate(25deg)}}
+
+/* ---------- INTRO ---------- */
+#show{position:fixed;inset:0;z-index:60;background:#2b1b24;display:flex;align-items:center;justify-content:center;text-align:center;transition:opacity 1.2s,visibility 1.2s;overflow:hidden}
+#show.gone{opacity:0;visibility:hidden}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;opacity:0;transition:opacity 1.2s;pointer-events:none;color:#fff}
+.scene.on{opacity:1;pointer-events:auto}
+.bgph{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.6;transform:scale(1.12);animation:kb 16s ease-out forwards}
+@keyframes kb{to{transform:scale(1)}}
+.bgsoft{position:absolute;inset:0;background:linear-gradient(180deg,rgba(60,30,45,.35),rgba(60,30,45,.78))}
+.scene>*:not(.bgph):not(.bgsoft){position:relative}
+.start-ring{width:120px;height:120px;border-radius:50%;border:1.5px solid rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;font-size:42px;animation:pulse 2.2s infinite;cursor:pointer;background:rgba(255,255,255,.08)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.4)}100%{box-shadow:0 0 0 36px rgba(255,255,255,0)}}
+.start-txt{margin-top:20px;font:500 26px Caveat,cursive;opacity:.9}
+.story{font:500 clamp(28px,7vw,50px)/1.25 "Playfair Display",serif;max-width:780px;text-shadow:0 2px 20px rgba(0,0,0,.35)}
+.story em{font-style:italic;color:#ffd6e2}
+.word{display:inline-block;opacity:0;transform:translateY(12px);filter:blur(6px);transition:all .9s}
+.word.in{opacity:1;transform:none;filter:none}
+.big4{display:flex;flex-direction:column;gap:2px;align-items:center}
+.big4 .row{display:flex;align-items:baseline;gap:14px;opacity:0;transform:translateY(14px);filter:blur(8px);transition:all .9s ease}
+.big4 .row.in{opacity:1;transform:none;filter:none}
+.big4 b{font:500 clamp(46px,13vw,96px)/1.05 "Playfair Display",serif;font-style:italic;color:#ffd6e2}
+.big4 span{font:500 clamp(22px,5.6vw,40px) Inter,sans-serif}
+.big4 .first b{font-size:clamp(40px,11vw,80px);color:#fff}
+.slogan{margin-top:22px;font:700 clamp(30px,8vw,52px) Caveat,cursive;opacity:0;transition:opacity 1.2s}
+.slogan.in{opacity:1}
+.skip{position:absolute;bottom:22px;right:22px;background:none;border:0;color:#fff;font:500 14px Inter;cursor:pointer;opacity:.7;z-index:3}
+
+#sound{position:fixed;top:14px;right:14px;z-index:40;border:1.5px solid var(--rose2);background:rgba(255,255,255,.92);color:var(--rose);font:700 15px Inter;padding:10px 16px;border-radius:999px;cursor:pointer;display:none;box-shadow:var(--shadow)}
+
+/* ---------- HERO ---------- */
+main{position:relative;z-index:1}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 0 30px}
+.hello{font:700 30px Caveat,cursive;color:var(--rose)}
+.hero h1{font-size:clamp(36px,9vw,72px);line-height:1.1;margin-top:4px}
+.hero .date{font-size:17px;margin:14px 0 2px;color:var(--muted)}
+.polas{position:relative;width:min(560px,92vw);height:300px;margin:30px auto 0}
+.pola{position:absolute;width:150px;background:#fff;padding:8px 8px 32px;border-radius:3px;box-shadow:0 14px 34px rgba(120,70,90,.25);transition:transform 1.1s cubic-bezier(.2,1.1,.4,1),opacity 1s;opacity:0}
+.pola.in{opacity:1}
+.pola .ph{width:134px;height:134px;overflow:hidden;background:var(--blush)}
+.pola .ph img{width:100%;height:100%;object-fit:cover}
+.pola .cap{position:absolute;bottom:4px;left:0;right:0;text-align:center;color:var(--text);font:600 21px Caveat,cursive}
+.since{margin-top:18px;font:700 30px Caveat,cursive;color:var(--rose)}
+.cd{margin-top:4px;color:var(--muted);font-size:15px}
+.cd b{color:var(--text)}
+
+/* ---------- ABSCHNITTE ---------- */
+section{padding:60px 0 10px}
+.kick{font:700 26px Caveat,cursive;color:var(--rose);margin-bottom:2px}
+h2{font-size:clamp(30px,7vw,44px);line-height:1.15;margin-bottom:8px}
+.lead{color:var(--muted);font-size:16px;margin:0 0 20px}
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1s,transform 1s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* Tiere */
+.animals{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:700px){.animals{grid-template-columns:repeat(2,1fr)}}
+.ani{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:3/4;cursor:pointer;box-shadow:var(--shadow);background:#fff}
+.ani img{width:100%;height:100%;object-fit:cover;filter:blur(16px) saturate(.8);transform:scale(1.15);transition:all 1.2s cubic-bezier(.2,.8,.2,1)}
+.ani .ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,245,248,.35);transition:opacity .6s}
+.ani .ov b{font-size:50px}
+.ani .ov span{font:700 24px Caveat,cursive;color:var(--text)}
+.ani .nm{position:absolute;left:0;right:0;bottom:0;padding:24px 10px 10px;background:linear-gradient(transparent,rgba(60,30,45,.7));text-align:center;color:#fff;font:700 28px Caveat,cursive;opacity:0;transform:translateY(16px);transition:all .8s .4s}
+.ani.o{cursor:default}.ani.o img{filter:none;transform:none}.ani.o .ov{opacity:0}.ani.o .nm{opacity:1;transform:none}
+
+/* Zeitreise */
+.tl{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px 16px 30px;margin:0 -16px;scrollbar-width:none}
+.tl::-webkit-scrollbar{display:none}
+.mem{flex:0 0 min(76%,290px);scroll-snap-align:center;background:#fff;padding:10px 10px 16px;border-radius:4px;box-shadow:0 16px 36px rgba(120,70,90,.2);transform:rotate(var(--r,0deg))}
+.mem .ph{height:290px;overflow:hidden;background:var(--blush)}
+.mem .ph img{width:100%;height:100%;object-fit:cover}
+.mem .yr{font:700 12px Inter;letter-spacing:2px;color:var(--rose);margin-top:10px;text-transform:uppercase}
+.mem .cap{font:600 26px/1.1 Caveat,cursive;margin-top:2px}
+.mem.next{background:linear-gradient(160deg,#f3c6d4,#f7e2cf);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:370px}
+.mem.next .q{font:italic 500 90px "Playfair Display",serif;color:#fff;animation:breathe 2.4s infinite}
+@keyframes breathe{50%{transform:scale(1.08)}}
+.hint{font:700 22px Caveat,cursive;color:var(--muted);margin:26px 0 0}
+
+/* Plan */
+.tabs{display:none;gap:8px;margin-bottom:12px;position:sticky;top:8px;z-index:5}
+.tabs button{flex:1;border:1.5px solid var(--line);background:rgba(255,255,255,.95);color:var(--muted);font:700 14px Inter;padding:10px 6px;border-radius:999px;cursor:pointer}
+.tabs button.on{background:var(--rose);color:#fff;border-color:var(--rose)}
+.days{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.col{border-radius:22px;padding:20px 18px;background:#fff;box-shadow:var(--shadow)}
+.col .dh h3{font-size:30px;font-style:italic}
+.col .dh small{color:var(--muted)}
+.col .motto{font:700 25px Caveat,cursive;color:var(--rose);margin:2px 0 8px}
+.it{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line)}
+.it .t{flex:0 0 58px;font-weight:700;font-size:12.5px;color:var(--gold);padding-top:3px;text-transform:uppercase;letter-spacing:.5px}
+.it .x{flex:1}
+.it b{font-weight:500;font-size:16px;display:block;line-height:1.35}
+.it .s{font-size:13.5px;color:var(--muted)}
+.it.tap{cursor:pointer}
+.it .more{flex:0 0 26px;height:26px;border-radius:50%;border:1.5px solid var(--rose2);color:var(--rose);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px;margin-top:2px}
+.cr{display:inline-block;margin-top:5px;font:700 19px Caveat,cursive;color:var(--rose)}
+.gift{cursor:pointer;margin:8px 0 0;padding:14px;border-radius:16px;border:1.5px dashed var(--rose2);text-align:center;background:#fff9fb}
+.gift .g{font-size:30px;display:inline-block;animation:wig 2.4s infinite}
+@keyframes wig{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+.gift .h{font:700 22px Caveat,cursive;color:var(--rose)}
+.gift .open{display:none;text-align:left}
+.gift.o{border-style:solid;cursor:default}
+.gift.o .closed{display:none}
+.gift.o .open{display:block;animation:pop .7s cubic-bezier(.2,1.3,.4,1)}
+@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:none;opacity:1}}
+@media(max-width:820px){.tabs{display:flex}.days{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -16px;padding:4px 16px 20px;scrollbar-width:none}.days::-webkit-scrollbar{display:none}.col{flex:0 0 88%;scroll-snap-align:center}}
+
+/* Sheet */
+#veil{position:fixed;inset:0;background:rgba(74,51,64,.35);backdrop-filter:blur(3px);z-index:70;opacity:0;visibility:hidden;transition:all .35s}
+#veil.on{opacity:1;visibility:visible}
+#sheet{position:fixed;left:50%;bottom:0;transform:translate(-50%,105%);width:min(620px,100%);max-height:86vh;overflow:auto;z-index:71;background:#fff;border-radius:26px 26px 0 0;padding:14px 20px 30px;transition:transform .5s cubic-bezier(.2,.9,.2,1);box-shadow:0 -10px 40px rgba(120,70,90,.2)}
+#sheet.on{transform:translate(-50%,0)}
+#sheet .grab{width:44px;height:5px;border-radius:9px;background:var(--line);margin:0 auto 14px}
+#sheet .close{position:absolute;top:12px;right:14px;background:var(--bg);border:0;color:var(--text);width:34px;height:34px;border-radius:50%;font-size:16px;cursor:pointer}
+#sheet h3{font-size:28px;font-style:italic}
+#sheet .sub{color:var(--muted);font-size:14px;margin:2px 0 14px}
+.opt{border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:12px;background:#fffafb}
+.opt .head{display:flex;gap:12px;align-items:center}
+.opt .em{font-size:32px}
+.opt h4{font-size:20px}
+.opt ul{margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:14.5px}
+.opt li{margin:4px 0}
+.opt .meta{margin-top:8px;font-size:13.5px;color:var(--rose)}
+.fav{margin-top:10px;border:1.5px solid var(--rose2);background:#fff;color:var(--rose);font:700 13.5px Inter;padding:7px 14px;border-radius:999px;cursor:pointer}
+.fav.on{background:var(--rose);color:#fff;border-color:var(--rose)}
+
+/* Glas + Favoriten */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:820px){.duo{grid-template-columns:1fr}}
+.box{border-radius:24px;padding:26px 20px;background:#fff;box-shadow:var(--shadow);text-align:center}
+.glass{font-size:70px;display:inline-block;cursor:pointer}
+.glass.shake{animation:shake .7s}
+@keyframes shake{20%{transform:rotate(-12deg)}40%{transform:rotate(10deg)}60%{transform:rotate(-6deg)}80%{transform:rotate(4deg)}}
+#question{min-height:90px;font:italic 500 21px "Playfair Display",serif;margin:12px auto 16px;max-width:440px;display:flex;align-items:center;justify-content:center}
+
+/* Packliste */
+.pack{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pack label{display:flex;gap:10px;align-items:center;background:#fff;border-radius:14px;padding:12px;font-size:14.5px;cursor:pointer;box-shadow:0 4px 14px rgba(150,90,110,.08)}
+.pack input{width:20px;height:20px;accent-color:var(--rose);flex:0 0 auto}
+@media(max-width:460px){.pack{grid-template-columns:1fr}}
+.q{background:#fff;border-radius:18px;padding:4px 18px;box-shadow:0 4px 14px rgba(150,90,110,.08)}
+.q div{padding:12px 0;border-top:1px solid var(--line);font-size:15px}
+.q div:first-child{border-top:0}
+
+.finale{text-align:center;padding:80px 0 120px}
+.finale h2{font-size:clamp(40px,10vw,64px);font-style:italic}
+.sig{margin-top:30px;font:700 34px Caveat,cursive;color:var(--rose);line-height:1.2}
+</style>
+</head>
+<body>
+<div id="floaters"></div>
+
+<!-- ========== INTRO ========== -->
+<div id="show">
+  <div class="scene on" id="sc0"><div class="bgph" style="background-image:url(fotos/f02.jpg)"></div><div class="bgsoft"></div>
+    <div class="start-ring" id="startBtn">♡</div>
+    <div class="start-txt">Ton an &amp; antippen</div>
+  </div>
+  <div class="scene" id="sc1"><div class="bgph" style="background-image:url(fotos/f01.jpg)"></div><div class="bgsoft"></div><div class="story" id="st1"></div></div>
+  <div class="scene" id="sc2"><div class="bgph" style="background-image:url(fotos/f13.jpg)"></div><div class="bgsoft"></div><div class="story" id="st2"></div></div>
+  <div class="scene" id="sc3"><div class="bgph" style="background-image:url(fotos/f12.jpg)"></div><div class="bgsoft"></div>
+    <div class="big4">
+      <div class="row first"><b>35+</b><span>Jahre Freundschaft</span></div>
+      <div class="row"><b>4</b><span>Power Ladies</span></div>
+      <div class="row"><b>3</b><span>Tage</span></div>
+      <div class="row"><b>2</b><span>Nächte</span></div>
+      <div class="row"><b>1</b><span>Wochenende nur für uns</span></div>
+    </div>
+    <div class="slogan" id="slogan">Wir feiern unsere Freundschaft 💗</div>
+  </div>
+  <div class="scene" id="sc4"><div class="bgph" style="background-image:url(fotos/f07.jpg)"></div><div class="bgsoft"></div>
+    <div style="font-size:70px">🥂</div>
+    <div class="story" style="margin:10px 0 26px">Bereit?</div>
+    <button class="btn" id="popBtn">Korken knallen lassen</button>
+  </div>
+  <button class="skip" id="skip">überspringen ›</button>
+</div>
+
+<button id="sound">🔊 Musik aus</button>
+
+<main>
+<div class="wrap">
+
+  <section class="hero">
+    <div class="hello">Psst, Mädels …</div>
+    <h1>Wir feiern unsere <span class="rose">Freundschaft</span></h1>
+    <div class="date">Freitag 16. bis Sonntag 18. Oktober · Kehl am Rhein</div>
+    <div class="polas" id="polas"></div>
+    <div class="since">35+ Jahre und kein bisschen leise 💗</div>
+    <div class="cd" id="cd"></div>
+  </section>
+
+  <!-- ZEITREISE -->
+  <section>
+    <div class="rv">
+      <div class="kick">Eine kleine Zeitreise</div>
+      <h2>Erinnert ihr euch <span class="rose">noch?</span></h2>
+      <p class="lead">2021, in einer gemütlichen Stube. Wer steckt hinter welchem Tier? Antippen zum Enthüllen.</p>
+    </div>
+    <div class="animals rv" id="animals"></div>
+    <p class="hint rv">… und dann ging es weiter. Wisch mal 👉</p>
+    <div class="tl rv">
+      <div class="mem" style="--r:-2deg"><div class="ph"><img src="fotos/f10.jpg" alt="" loading="lazy"></div><div class="yr">Fasching 2025</div><div class="cap">Verkleidet &amp; verrückt</div></div>
+      <div class="mem" style="--r:1.5deg"><div class="ph"><img src="fotos/f01.jpg" alt="" loading="lazy"></div><div class="yr">Dezember 2025</div><div class="cap">Pizza, Wein &amp; wir</div></div>
+      <div class="mem" style="--r:-1deg"><div class="ph"><img src="fotos/f12.jpg" alt="" loading="lazy"></div><div class="yr">Fasching 2026</div><div class="cap">Die Fliegerinnen ✈️</div></div>
+      <div class="mem" style="--r:2deg"><div class="ph"><img src="fotos/f02.jpg" alt="" loading="lazy"></div><div class="yr">Sommer 2026</div><div class="cap">Terrassen-Glück 😊</div></div>
+      <div class="mem next" style="--r:-1.5deg"><div class="q">?</div><div class="yr">16. Oktober 2026</div><div class="cap">Das nächste Kapitel:<br>Kehl 🥂</div></div>
+    </div>
+  </section>
+
+  <!-- PLAN -->
+  <section>
+    <div class="rv">
+      <div class="kick">Unser Wochenende</div>
+      <h2>Eure Ideen, <span class="rose">ein Plan</span></h2>
+      <p class="lead">Alles, was ihr in der Gruppe vorgeschlagen habt. Punkte mit ＋ antippen für Details und eure 💗. Final entscheiden wir gemeinsam vor Ort.</p>
+    </div>
+    <div class="tabs" id="tabs"><button class="on" data-i="0">Freitag</button><button data-i="1">Samstag</button><button data-i="2">Sonntag</button></div>
+    <div class="days rv" id="days">
+      <div class="col">
+        <div class="dh"><h3>Freitag</h3><small>16.10.</small></div>
+        <div class="motto">Ankommen &amp; anstoßen</div>
+        <div class="it"><div class="t">14 Uhr</div><div class="x"><b>Abfahrt 🚗</b><span class="s">Playlist laut, Fenster runter</span></div></div>
+        <div class="it"><div class="t">Später</div><div class="x"><b>Ferienwohnung beziehen</b><span class="s">Taschen abstellen, erster Sekt 🥂</span></div></div>
+        <div class="it tap" data-sheet="hafen"><div class="t">Abends</div><div class="x"><b>Essen im Hafen 17 ⚓</b><span class="cr">Kati hat reserviert 💗</span></div><div class="more">＋</div></div>
+        <div class="gift" id="gift">
+          <div class="closed"><div class="g">🎁</div><div class="h">Überraschung für danach · antippen</div></div>
+          <div class="open"><b>🧖‍♀️ Masken-Abend à la Freshtorge</b><div class="s" style="margin-top:4px">Bademantel, Maske drauf, Wein in der Hand und Gespräche „wie diese“ 😂 Simone bringt ihren ganzen Masken-Vorrat mit.</div><span class="cr">Inspiriert von Biggis Video 💗</span></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="dh"><h3>Samstag</h3><small>17.10.</small></div>
+        <div class="motto">Weinberge &amp; Fachwerk</div>
+        <div class="it"><div class="t">Morgens</div><div class="x"><b>Gemütliches Frühstück ☕</b><span class="s">Ohne Wecker, mit viel Kaffee</span></div></div>
+        <div class="it tap" data-sheet="dorf"><div class="t">Vormittag</div><div class="x"><b>Ab ins Elsass: Städtchen nach Wahl</b><span class="cr">Katis &amp; Biggis Ideen 💗</span></div><div class="more">＋</div></div>
+        <div class="it tap" data-sheet="wein"><div class="t">Mittag</div><div class="x"><b>Gemütliche Weinbergwanderung 🍇</b><span class="cr">Biggis Idee, alle vier sind dabei 💗</span></div><div class="more">＋</div></div>
+        <div class="it"><div class="t">Danach</div><div class="x"><b>Flammkuchen &amp; ein Glas Elsässer</b></div></div>
+        <div class="it"><div class="t">Abends</div><div class="x"><b>Zusammen kochen 🍝</b><span class="s">Musik an, jede schnippelt mit</span></div></div>
+        <div class="it"><div class="t">Später</div><div class="x"><b>Spiele &amp; Deep Talk 🃏</b><span class="s">Mit dem Fragen-Glas (unten)</span></div></div>
+        <div class="it tap" data-sheet="regen"><div class="t">Joker</div><div class="x"><b>Plan B, falls es regnet 🌧️</b><span class="cr">Danke Kati fürs Dran-Denken</span></div><div class="more">＋</div></div>
+      </div>
+      <div class="col">
+        <div class="dh"><h3>Sonntag</h3><small>18.10.</small></div>
+        <div class="motto">Langsam &amp; leise</div>
+        <div class="it"><div class="t">Morgens</div><div class="x"><b>Ausschlafen &amp; gemütlich frühstücken</b></div></div>
+        <div class="it tap" data-sheet="sonntag"><div class="t">Vormittag</div><div class="x"><b>Spazieren &amp; reden, Ziel nach Wahl</b><span class="cr">Katis &amp; Biggis Ideen 💗</span></div><div class="more">＋</div></div>
+        <div class="it"><div class="t">Nachm.</div><div class="x"><b>Heimfahrt 🚗</b><span class="s">Mit vollem Herzen (und Wein im Kofferraum)</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GLAS + FAVORITEN -->
+  <section>
+    <div class="duo">
+      <div class="box rv">
+        <div class="kick">Für Samstagabend</div>
+        <h2 style="font-size:32px">Das <span class="rose">Fragen-Glas</span></h2>
+        <div class="glass" id="glass">🫙</div>
+        <div id="question">Na, traust du dich?</div>
+        <button class="btn" id="draw">Frage ziehen</button>
+      </div>
+      <div class="box rv">
+        <div class="kick">Abstimmung</div>
+        <h2 style="font-size:32px">Deine <span class="rose">Favoriten</span></h2>
+        <p class="lead" id="favlist" style="margin-top:12px"></p>
+        <button class="btn soft" id="send">📲 An die Gruppe schicken</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKLISTE -->
+  <section>
+    <div class="rv">
+      <div class="kick">Ganz wichtig</div>
+      <h2>Die etwas andere <span class="rose">Packliste</span></h2>
+      <p class="lead">Zum Abhaken. Wer alles hat, bekommt eine Überraschung.</p>
+    </div>
+    <div class="pack rv" id="pack"></div>
+    <div class="rv" style="margin-top:30px">
+      <div class="kick">Klären wir noch</div>
+      <div class="q">
+        <div>🚗 <b>Wer fährt?</b> Babsi und Simone fahren gern. Nur: Babsis Kofferraum passt nicht für 4× Gepäck, Simones Auto hat zwei Sitze 😅 Zwei Autos, oder hat jemand den großen Kofferraum?</div>
+        <div>📍 <b>Treffpunkt 14 Uhr:</b> bei Biggi?</div>
+        <div>🥐 <b>Frühstück &amp; Abend:</b> Kati hat in der Gruppe eine Umfrage gestartet, wer was mitbringt. Schnell abstimmen! 💗</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="finale">
+    <div class="rv">
+      <h2>Auf uns, <span class="rose">Mädels!</span></h2>
+      <p class="lead" style="margin-top:12px">Quatschen, lachen, anstoßen, genießen.</p>
+      <button class="btn soft" id="again">🎉 Nochmal Konfetti</button>
+      <div class="sig">Freu mich auf unser Mädelswochenende 💗<br>Simone</div>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<div id="veil"></div>
+<div id="sheet"><div class="grab"></div><button class="close" id="close">✕</button><div id="sheetBody"></div></div>
+
+<script>
+const PHOTOS=['fotos/f07.jpg','fotos/f13.jpg','fotos/f02.jpg','fotos/f11.jpg','fotos/f01.jpg'];
+const CAPS=['Abfahrt!','Wandern 🥾','Terrasse','Winterglück','Prost!'];
+// Tier-Enthüllung 2021: Namen eintragen (Katze, Häschen, Schäfchen, Reh)
+const ANIMALS=[['fotos/f03.jpg','🐱','Kati 🐱'],['fotos/f04.jpg','🐰','Biggi 🐰'],['fotos/f05.jpg','🐑','Babsi 🐑'],['fotos/f06.jpg','🦌','Simone 🦌']];
+
+// Herzchen
+(function(){const b=document.getElementById('floaters');for(let i=0;i<14;i++){const s=document.createElement('div');s.className='fl';s.textContent='♡';s.style.fontSize=(12+Math.random()*16)+'px';s.style.left=Math.random()*100+'%';s.style.animationDuration=(14+Math.random()*14)+'s';s.style.animationDelay=(-Math.random()*25)+'s';b.appendChild(s);}})();
+
+// Polaroids
+(function(){const box=document.getElementById('polas');const spots=[[-170,20,-9],[-60,-6,5],[50,24,-4],[150,0,8],[0,62,-2]];PHOTOS.forEach((src,i)=>{const p=document.createElement('div');p.className='pola';let [x,y,r]=spots[i];if(innerWidth<480)x=Math.round(x*.6);p.style.left='calc(50% - 75px)';p.style.top='30px';p.dataset.t=`translate(${x}px,${y}px) rotate(${r}deg)`;p.style.transform='translate(0,380px)';p.innerHTML=`<div class="ph"><img src="${src}" alt=""></div><div class="cap">${CAPS[i]}</div>`;box.appendChild(p);});})();
+function dealPolas(){document.querySelectorAll('.pola').forEach((p,i)=>setTimeout(()=>{p.classList.add('in');p.style.transform=p.dataset.t;},400+i*300));}
+
+// Konfetti (zart)
+const colors=['#f3b5c8','#e9a8bd','#f7e2cf','#ffffff','#d4789a','#e8cfa0'];
+function boom(){if(typeof confetti!=='function')return;confetti({particleCount:120,spread:100,origin:{y:.6},colors,scalar:.9});setTimeout(()=>confetti({particleCount:60,angle:60,spread:70,origin:{x:0,y:.7},colors}),300);setTimeout(()=>confetti({particleCount:60,angle:120,spread:70,origin:{x:1,y:.7},colors}),450);}
+function sparkle(x,y){if(typeof confetti==='function')confetti({particleCount:40,spread:60,startVelocity:24,origin:{x,y},colors,scalar:.8});}
+
+// Musik: sanft, Spieluhr-Gefühl, blendet nach dem Intro aus
+let ac,master,playing=false,timer,step=0,nextT=0;const bpm=84,s8=60/bpm/2;
+const prog=[[57,60,64,69],[53,57,60,65],[48,52,55,60],[55,59,62,67]];
+const f=m=>440*Math.pow(2,(m-69)/12);
+function tone(fr,t,d,type,v){const o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.value=fr;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(master);o.start(t);o.stop(t+d+.05);}
+function sched(){while(nextT<ac.currentTime+.2){const bar=Math.floor(step/8)%4,s=step%8,t=nextT,ch=prog[bar];
+  if(s===0){tone(f(ch[0]-12),t,2.6,'sine',.09);ch.slice(1).forEach(n=>tone(f(n),t,2.4,'sine',.025));}
+  const arp=[0,1,2,3,2,1,2,3];tone(f(ch[arp[s]]+12),t,.9,'triangle',.035);
+  nextT+=s8;step++;}}
+function chime(n){if(ac&&playing){tone(f(n),ac.currentTime,1.2,'sine',.06);tone(f(n+7),ac.currentTime+.08,1.2,'sine',.04);}}
+function startMusic(){if(!ac){ac=new(window.AudioContext||window.webkitAudioContext)();master=ac.createGain();master.gain.value=.9;master.connect(ac.destination);}ac.resume();if(playing)return;master.gain.cancelScheduledValues(ac.currentTime);master.gain.setValueAtTime(.9,ac.currentTime);playing=true;nextT=ac.currentTime+.2;timer=setInterval(sched,50);setBtn();}
+function stopMusic(fade){if(!playing)return;if(fade&&ac){master.gain.setTargetAtTime(0,ac.currentTime,2.5);setTimeout(()=>{clearInterval(timer);playing=false;setBtn();},9000);}else{clearInterval(timer);playing=false;setBtn();}}
+function setBtn(){document.getElementById('sound').textContent=playing?'🔊 Musik aus':'🔈 Musik an';}
+document.getElementById('sound').onclick=()=>playing?stopMusic(false):startMusic();
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stopMusic(false);});
+
+// Intro
+const wait=ms=>new Promise(r=>setTimeout(r,ms));let skipped=false;
+function show(id){document.querySelectorAll('.scene').forEach(s=>s.classList.toggle('on',s.id===id));}
+async function words(el,html){el.innerHTML=html.split(' ').map(w=>`<span class="word">${w}</span>`).join(' ');for(const w of el.querySelectorAll('.word')){if(skipped)return;w.classList.add('in');await wait(260);}}
+async function runShow(){startMusic();
+  show('sc1');await words(document.getElementById('st1'),'Wir kennen uns seit <em>mehr&nbsp;als&nbsp;35&nbsp;Jahren.</em>');if(skipped)return;await wait(2000);
+  show('sc2');await words(document.getElementById('st2'),'Höchste Zeit für ein Wochenende <em>nur&nbsp;für&nbsp;uns.</em>');if(skipped)return;await wait(1900);
+  show('sc3');await wait(700);
+  for(const r of document.querySelectorAll('.big4 .row')){if(skipped)return;r.classList.add('in');chime(76);await wait(1000);}
+  document.getElementById('slogan').classList.add('in');await wait(2600);if(skipped)return;show('sc4');}
+document.getElementById('startBtn').onclick=runShow;
+function enter(){document.getElementById('show').classList.add('gone');document.getElementById('sound').style.display='block';setBtn();setTimeout(boom,200);dealPolas();setTimeout(()=>stopMusic(true),20000);}
+document.getElementById('popBtn').onclick=()=>{startMusic();enter();};
+document.getElementById('skip').onclick=()=>{skipped=true;enter();};
+
+// Countdown (ruhig, eine Zeile)
+const target=new Date('2026-10-16T14:00:00+02:00');
+function tick(){let d=target-new Date();const el=document.getElementById('cd');if(d<=0){el.innerHTML='<b>Es geht los!</b> 🥂';return;}const D=Math.floor(d/864e5),H=Math.floor(d%864e5/36e5),M=Math.floor(d%36e5/6e4);el.innerHTML=`Noch <b>${D} Tage, ${H} Stunden und ${M} Minuten</b>`;}
+tick();setInterval(tick,30000);
+
+// Reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// Tiere
+(function(){const box=document.getElementById('animals');ANIMALS.forEach(([src,em,name])=>{const a=document.createElement('div');a.className='ani';a.innerHTML=`<img src="${src}" alt=""><div class="ov"><b>${em}</b><span>Wer ist das?</span></div><div class="nm">${name||'Na, wer wohl? 😄'}</div>`;a.onclick=e=>{if(a.classList.contains('o'))return;a.classList.add('o');sparkle(e.clientX/innerWidth,e.clientY/innerHeight);chime(81);if(document.querySelectorAll('.ani.o').length===ANIMALS.length)setTimeout(boom,700);};box.appendChild(a);});})();
+
+// Tabs
+const days=document.getElementById('days'),tabBtns=[...document.querySelectorAll('#tabs button')];
+tabBtns.forEach(b=>b.onclick=()=>{const c=days.children[+b.dataset.i];days.scrollTo({left:c.offsetLeft-16,behavior:'smooth'});});
+days.addEventListener('scroll',()=>{const w=days.children[0].offsetWidth+12;const i=Math.round(days.scrollLeft/w);tabBtns.forEach((b,j)=>b.classList.toggle('on',j===i));},{passive:true});
+
+// Überraschung
+document.getElementById('gift').onclick=function(){if(this.classList.contains('o'))return;this.classList.add('o');const r=this.getBoundingClientRect();sparkle((r.left+r.width/2)/innerWidth,(r.top+30)/innerHeight);chime(84);};
+
+// Details
+const S={
+ hafen:{t:'Hafen 17 ⚓',s:'Freitagabend · Hafenstraße 17, Kehl',o:[{e:'🍽️',h:'Hotel, Küche &amp; Bar',l:['Gemütliches Wohnzimmer-Flair direkt am Kehler Hafen','Regionale Küche mit internationalen Akzenten, Tapas &amp; Co.'],m:'Kati hat schon reserviert, danke dir! 💗'}]},
+ dorf:{t:'Städtchen nach Wahl',s:'Samstagvormittag · gern auch nur kurz, Babsi sagt: muss keine Stadt sein 😉',o:[
+  {k:'Colmar + Eguisheim',e:'⛵',h:'Colmar &amp; Eguisheim',who:'Katis Idee',l:['<b>Colmar:</b> „La Petite Venise“, bunte Fachwerkhäuser am Wasser','<b>Eguisheim:</b> schon zum schönsten Dorf Frankreichs gewählt, Gassen in Kreisen ums Schloss'],m:'🚗 ca. 1 Std. ab Kehl'},
+  {k:'Riquewihr',e:'🏰',h:'Riquewihr',who:'Biggis Tipp',l:['Biggi kennt Colmar von vielen Besuchen und empfiehlt Riquewihr als entspanntere Alternative','Mittelalterliche Mauern, Fachwerk, kleine Weinstuben','Die Weinbergwanderung startet direkt hier'],m:'🚗 knapp 1 Std. ab Kehl'}]},
+ wein:{t:'Weinbergwanderung 🍇',s:'Biggis Idee · Kati, Babsi und Simone sind sofort dabei',o:[
+  {e:'🌿',h:'Gemütlich durch die Reben: Riquewihr ↔ Hunawihr',l:['Ca. 5 km, 1,5 bis 2 Std., leichte, breite Wege','Viel Zeit zum Reden, zwischendurch Fotostopps','Mitte Oktober: Herbstgold &amp; Weinlese-Stimmung'],m:'Danach Flammkuchen in einem der Dörfer 🥂 · wenn das Wetter mitspielt'}]},
+ regen:{t:'Plan B bei Regen 🌧️',s:'Ca. 50 Min. ab Kehl',o:[
+  {k:'Hohkönigsburg',e:'🏯',h:'Hohkönigsburg',l:['Ritterburg mit 900 Jahren Geschichte','Im Oktober täglich 9:30 bis 17 Uhr']},
+  {k:'Affenberg',e:'🐒',h:'Affenberg Kintzheim',l:['Berberaffen mit Popcorn füttern','10 bis 17 Uhr']},
+  {k:'Kuschel-Plan',e:'🛋️',h:'Kuschel-Plan',l:['Decken, Kerzen, Spiele, Wein','Mehr Zeit fürs Fragen-Glas']}]},
+ sonntag:{t:'Sonntag: spazieren &amp; reden',s:'Gemütlich, ohne Stress',o:[
+  {k:'Straßburg',e:'🌳',h:'Straßburg &amp; Garten der zwei Ufer',who:'Katis Idee',l:['Zu Fuß über die Rheinbrücke nach Frankreich','Parc de l\'Orangerie mit Störchen'],m:'🚶‍♀️ direkt ab Kehl'},
+  {k:'Gengenbach',e:'⛪',h:'Gengenbach &amp; Bergle-Kapelle',who:'Biggis Tipp',l:['Fachwerk-Altstadt im Schwarzwald, liegt auf dem Heimweg','Kleiner Spaziergang hoch zur Jakobskapelle, Blick über die Weinberge','Danach Kaffee &amp; Kuchen in der Altstadt'],m:'🚗 ca. 30 km ab Kehl'}]}
+};
+let favs=[];try{favs=JSON.parse(localStorage.getItem('kehl-favs3')||'[]')}catch(e){}
+function saveFavs(){try{localStorage.setItem('kehl-favs3',JSON.stringify(favs))}catch(e){}renderFavs();}
+function renderFavs(){document.getElementById('favlist').innerHTML=favs.length?('Deine 💗<br><b style="color:var(--text)">'+favs.join(' · ')+'</b>'):'Noch nichts markiert. Tipp im Plan auf die Punkte mit ＋ und vergib deine 💗.';}
+function openSheet(key){const d=S[key];let h=`<h3>${d.t}</h3><div class="sub">${d.s}</div>`;
+  d.o.forEach(o=>{h+=`<div class="opt"><div class="head"><div class="em">${o.e}</div><div><h4>${o.h}</h4>${o.who?`<span class="cr">${o.who} 💗</span>`:''}</div></div><ul>${o.l.map(x=>`<li>${x}</li>`).join('')}</ul>${o.m?`<div class="meta">${o.m}</div>`:''}${o.k?`<button class="fav${favs.includes(o.k)?' on':''}" data-k="${o.k}">💗 Favorit</button>`:''}</div>`;});
+  document.getElementById('sheetBody').innerHTML=h;
+  document.querySelectorAll('#sheetBody .fav').forEach(b=>b.onclick=e=>{const k=b.dataset.k;if(favs.includes(k))favs=favs.filter(x=>x!==k);else{favs.push(k);sparkle(e.clientX/innerWidth,e.clientY/innerHeight);}b.classList.toggle('on');saveFavs();});
+  document.getElementById('veil').classList.add('on');document.getElementById('sheet').classList.add('on');document.getElementById('sheet').scrollTop=0;}
+function closeSheet(){document.getElementById('veil').classList.remove('on');document.getElementById('sheet').classList.remove('on');}
+document.querySelectorAll('[data-sheet]').forEach(el=>el.onclick=()=>openSheet(el.dataset.sheet));
+document.getElementById('veil').onclick=closeSheet;document.getElementById('close').onclick=closeSheet;
+renderFavs();
+document.getElementById('send').onclick=()=>{const txt=favs.length?('Meine Favoriten fürs Wochenende 💗: '+favs.join(', ')+' 🥂'):'Hab mir die Wochenend-Seite angeschaut 🥂 und bin für alles offen!';window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank');};
+
+// Fragen-Glas
+const qs=['Was hat dich dieses Jahr an dir selbst am meisten überrascht?','Wofür bist du gerade richtig dankbar?','Welcher Moment mit uns vieren fällt dir als Erstes ein?','Was würdest du machen, wenn du ein Jahr frei hättest?','Welchen Rat würdest du deinem 20-jährigen Ich geben?','Wovon träumst du heimlich?','Was hast du dich lange nicht getraut und dann doch gemacht?','Welches Lied ist gerade der Soundtrack deines Lebens?','Was möchtest du in einem Jahr anders machen als heute?','Wer hat dich in deinem Leben am meisten geprägt?','Über welchen peinlichen Moment kannst du heute lachen?','Wann hast du zuletzt Tränen gelacht?','Was bedeutet Freundschaft für dich, nach all den Jahren?','Was bewunderst du an der Frau links neben dir?','Was ist dein Guilty Pleasure?','Was willst du unbedingt noch erleben?','Worüber hast du in den letzten Jahren deine Meinung geändert?','Was gibt dir Kraft?','Was war unser legendärster gemeinsamer Moment?','Was würdest du tun, wenn du wüsstest, dass es nicht schiefgehen kann?','Wann fühlst du dich am meisten wie du selbst?','Welche kleine Gewohnheit hat dein Leben besser gemacht?','Was sollten wir vier unbedingt noch zusammen machen?','Was hättest du vor 35 Jahren nie über dich geglaubt?'];
+let pool=[];
+function draw(){if(!pool.length)pool=qs.slice().sort(()=>Math.random()-.5);const g=document.getElementById('glass');g.classList.remove('shake');void g.offsetWidth;g.classList.add('shake');const q=document.getElementById('question');q.style.opacity=0;setTimeout(()=>{q.textContent='„'+pool.pop()+'“';q.style.transition='opacity .6s';q.style.opacity=1;},400);chime(88);}
+document.getElementById('draw').onclick=draw;document.getElementById('glass').onclick=draw;
+
+// Packliste
+const items=['Personalausweis 🇫🇷 (sonst bleibst du am Rhein stehen)','Bequeme Schuhe für die Weinberge 👟','Bademantel für den Masken-Abend 🧖‍♀️','Kuschelsocken 🧦','Taschentücher fürs Tränenlachen 😂','Eine gute Ausrede für die dritte Flasche 🍷','Lieblingsspiel 🃏','Regenjacke, falls Petrus nicht mitspielt ☔','Ladekabel 🔌 (ohne Akku keine Beweisfotos)','Lachfalten-Creme für Sonntag 😂','Platz im Kofferraum für Elsässer Wein','Gute Laune ✨ (Pflicht!)'];
+let packed={};try{packed=JSON.parse(localStorage.getItem('kehl-pack3')||'{}')}catch(e){}
+const pk=document.getElementById('pack');
+items.forEach((it,i)=>{const l=document.createElement('label');l.innerHTML='<input type="checkbox"'+(packed[i]?' checked':'')+'> '+it;l.querySelector('input').onchange=e=>{packed[i]=e.target.checked;try{localStorage.setItem('kehl-pack3',JSON.stringify(packed))}catch(_){};if(items.every((_,j)=>packed[j]))boom();};pk.appendChild(l);});
+document.getElementById('again').onclick=boom;
+</script>
+</body>
+</html>
